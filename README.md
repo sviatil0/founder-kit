@@ -1,6 +1,23 @@
-# founder-kit
+<div align="center">
 
-**Make Claude Code ship like a senior engineering team, when your whole team is you.**
+<img src="assets/banner.svg" alt="founder-kit: your engineering org, written down" width="100%"/>
+
+<br/><br/>
+
+<img src="https://img.shields.io/badge/license-MIT-10b981" alt="MIT license"/>
+<img src="https://img.shields.io/badge/skills-6-6366f1" alt="6 skills"/>
+<img src="https://img.shields.io/badge/install-2_commands-0ea5e9" alt="2-command install"/>
+<img src="https://img.shields.io/badge/Claude_Code-plugin-d97757" alt="Claude Code plugin"/>
+<br/>
+<img src="https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white" alt="Next.js"/>
+<img src="https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white" alt="Supabase"/>
+<img src="https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white" alt="Vercel"/>
+
+<br/><br/>
+
+<b>Make Claude Code ship like a senior engineering team, when your whole team is you.</b>
+
+</div>
 
 ```
 /plugin marketplace add sviatil0/founder-kit
@@ -11,7 +28,7 @@
 
 Two commands typed inside a Claude Code session. No build step, no config, no dotfiles.
 
-## Why you need this
+## ⚡ Why you need this
 
 Claude Code out of the box is a brilliant intern. It writes code astonishingly fast, and it
 ships the way an intern ships: straight to main, no issue, no plan, no tests, a PR
@@ -30,7 +47,7 @@ building; calls become deployed follow-up pages, vague questions become cited re
 
 You do not learn new commands. You talk the way you already talk, and Claude behaves better.
 
-## What actually changes
+## 🔁 What actually changes
 
 | You say | Without founder-kit | With founder-kit |
 |---|---|---|
@@ -41,7 +58,7 @@ You do not learn new commands. You talk the way you already talk, and Claude beh
 | a sales call ends | notes you never reopen | a password-locked brief on Vercel: their pains, the people involved, what was agreed, next steps |
 | "should we build X?" | confident guessing | a sharpened question, sources fetched and cross-checked, a cited report with confidence levels |
 
-## Your first hour
+## ⏱️ Your first hour
 
 After installing, try these in your project, verbatim:
 
@@ -54,16 +71,26 @@ If those three land, you have the idea. Everything below is reference.
 
 ---
 
-## The six skills
+## 🧰 The six skills
 
-| Skill | What it does | Say something like |
-|---|---|---|
-| `ship-flow` | Keeps every change on the issue, plan, branch, PR, merge path, sized for a tiny team. | "let's start the billing feature", "just quickly add a field", "open a PR for this" |
-| `engineering-standards` | The rulebook Claude checks code against: boundaries, zod validation, Supabase RLS, migration safety, React habits, logging, secrets, tests. | "follow the project style", "make this production grade", "is this safe to ship" |
-| `pr-writer` | PR titles and bodies that pass review and CI the first time, with honest checklists. | "write the PR", "my PR is blocked on the description", "summarize this branch" |
-| `meeting-brief` | Turns any call transcript into a password-locked brief deployed on Vercel: pains, people, agreements, action items. | "build a brief from our call", "turn this transcript into something I can share" |
-| `deep-research` | Sharpens a vague research request against a rubric, then fans out, verifies claims, and returns a cited report. | "research this properly", "I need a sourced report on the market", "/deep-research" |
-| `image-pipeline` | Judged generation loop: ideas, then prompts, then images, each stage scored against your brief before the next. | "generate a hero image", "make illustrations for the landing page" |
+| | Skill | What it does | Say something like |
+|---|---|---|---|
+| 🚢 | `ship-flow` | Keeps every change on the issue, plan, branch, PR, merge path, sized for a tiny team. | "let's start the billing feature", "just quickly add a field", "open a PR for this" |
+| 📐 | `engineering-standards` | The rulebook Claude checks code against: boundaries, zod validation, Supabase RLS, migration safety, React habits, logging, secrets, tests. | "follow the project style", "make this production grade", "is this safe to ship" |
+| 📝 | `pr-writer` | PR titles and bodies that pass review and CI the first time, with honest checklists. | "write the PR", "my PR is blocked on the description", "summarize this branch" |
+| 🤝 | `meeting-brief` | Turns any call transcript into a password-locked brief deployed on Vercel: pains, people, agreements, action items. | "build a brief from our call", "turn this transcript into something I can share" |
+| 🔍 | `deep-research` | Sharpens a vague research request against a rubric, then fans out, verifies claims, and returns a cited report. | "research this properly", "I need a sourced report on the market", "/deep-research" |
+| 🎨 | `image-pipeline` | Judged generation loop: ideas, then prompts, then images, each stage scored against your brief before the next. | "generate a hero image", "make illustrations for the landing page" |
+
+The skills compose; that sequence is the point of the kit:
+
+```mermaid
+flowchart LR
+    A["💬 add Stripe billing"] --> B["🚢 ship-flow<br/>issue + plan first"]
+    B --> C["📐 engineering-standards<br/>governs the code"]
+    C --> D["📝 pr-writer<br/>reviewable PR"]
+    D --> E["✅ merged with a paper trail"]
+```
 
 Stack assumption for the code-facing skills: Next.js App Router, TypeScript, Supabase,
 Vercel. The workflow skills (ship-flow, pr-writer, deep-research, meeting-brief) do not care
@@ -74,7 +101,40 @@ beyond `git` and `gh`. deep-research uses the built-in web tools. meeting-brief 
 `python3` and a logged-in Vercel CLI. image-pipeline needs `GEMINI_API_KEY`. Every skill that
 depends on a credential checks for it first and prints setup instructions if it is missing.
 
-## 10-minute setup checklist
+## 🔌 How skills fire
+
+Skills are model-invoked, not menu items. Each one ships a description saying what it does
+and listing "Use when" phrases; Claude reads those descriptions and pulls in the matching
+skill when your request looks like one of them. Three practical consequences:
+
+1. **You can just talk.** "I want to add invites" is enough for ship-flow to take over.
+2. **You can name one.** "Use engineering-standards on this file" or "run deep-research on
+   Series A benchmarks" forces the choice when Claude guesses wrong.
+3. **You can check.** `/plugin` lists what is installed and enabled. If a skill never fires,
+   it is usually not installed or not enabled, not broken.
+
+## 🧩 Recommended third-party installs
+
+founder-kit is deliberately small. These four are what make it feel complete, and all four
+come from the official Claude Code marketplace:
+
+```
+/plugin install superpowers@claude-plugins-official
+/plugin install context7@claude-plugins-official
+/plugin install github@claude-plugins-official
+/plugin install code-review@claude-plugins-official
+```
+
+superpowers adds brainstorming, plan writing, and test-driven development skills; context7
+pulls current library docs instead of letting Claude guess at an API; github gives it real
+issue and PR tools; code-review gives you a second pair of eyes before you merge your own
+work. Full tiered list, including the build-the-UI and power-tool sets, is in
+[THIRD_PARTY.md](./THIRD_PARTY.md).
+
+<details>
+<summary><b>🕙 10-minute setup checklist</b></summary>
+
+<br/>
 
 Nothing below is required to install the plugin; each line unlocks one part of it.
 
@@ -93,42 +153,14 @@ Nothing below is required to install the plugin; each line unlocks one part of i
       `export GEMINI_API_KEY=...`. Only image-pipeline needs it; without it that skill prints
       setup steps and stops instead of failing in a loop.
 - [ ] **Optional**: copy `templates/CLAUDE.md` and `templates/settings.json` into your repo
-      (see "Using the templates" below).
+      (see the templates section below).
 
-## How skills fire
+</details>
 
-Skills are model-invoked, not menu items. Each one ships a description saying what it does
-and listing "Use when" phrases; Claude reads those descriptions and pulls in the matching
-skill when your request looks like one of them. Three practical consequences:
+<details>
+<summary><b>📄 Using the templates</b></summary>
 
-1. **You can just talk.** "I want to add invites" is enough for ship-flow to take over.
-2. **You can name one.** "Use engineering-standards on this file" or "run deep-research on
-   Series A benchmarks" forces the choice when Claude guesses wrong.
-3. **You can check.** `/plugin` lists what is installed and enabled. If a skill never fires,
-   it is usually not installed or not enabled, not broken.
-
-Skills compose: ship-flow opens the issue, engineering-standards governs the code, pr-writer
-writes the PR. That sequence is the point of the kit.
-
-## Recommended third-party installs
-
-founder-kit is deliberately small. These four are what make it feel complete, and all four
-come from the official Claude Code marketplace:
-
-```
-/plugin install superpowers@claude-plugins-official
-/plugin install context7@claude-plugins-official
-/plugin install github@claude-plugins-official
-/plugin install code-review@claude-plugins-official
-```
-
-superpowers adds brainstorming, plan writing, and test-driven development skills; context7
-pulls current library docs instead of letting Claude guess at an API; github gives it real
-issue and PR tools; code-review gives you a second pair of eyes before you merge your own
-work. Full tiered list, including the build-the-UI and power-tool sets, is in
-[THIRD_PARTY.md](./THIRD_PARTY.md).
-
-## Using the templates
+<br/>
 
 Two files you copy once per repo:
 
@@ -149,7 +181,12 @@ mkdir -p .claude && cp templates/settings.json .claude/settings.json
 Commit both. They are project configuration, not personal settings; anything machine-specific
 belongs in `.claude/settings.local.json`, which you should gitignore.
 
-## Updating
+</details>
+
+<details>
+<summary><b>🔄 Updating</b></summary>
+
+<br/>
 
 ```
 /plugin update founder-kit
@@ -163,7 +200,12 @@ marketplace:
 /plugin marketplace add sviatil0/founder-kit
 ```
 
-## Repo layout
+</details>
+
+<details>
+<summary><b>🗂️ Repo layout</b></summary>
+
+<br/>
 
 ```
 .claude-plugin/marketplace.json   the marketplace entry Claude reads
@@ -175,7 +217,9 @@ THIRD_PARTY.md                    tiered ecosystem guide with exact install comm
 docs/superpowers/                 design spec and implementation plan
 ```
 
-## Contributing
+</details>
+
+## 🤲 Contributing
 
 Issues and pull requests are welcome at https://github.com/sviatil0/founder-kit. Two rules
 for skill changes: a skill's `description` must name at least three concrete phrasings a user
