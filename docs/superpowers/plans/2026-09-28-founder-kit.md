@@ -108,7 +108,7 @@
 
 ### Task 7: Verification gate (orchestrator)
 
-- [ ] **Step 1: Leak scan:** `grep -rniE 'soleksii|oleksiienko|sviatoslav|stefan|nd\.edu|notre dame|x-fabric|desync|tweeds|clickup|innovation sprint|sprint lab|dnipro|questbridge|cal\.com/' plugins/ templates/ README.md THIRD_PARTY.md` → empty (then a separate check that `sviatil0` appears only in URLs).
+- [ ] **Step 1: Leak scan (root manifests, LICENSE included):** `grep -rniE 'soleksii|oleksiienko|sviatoslav|stefan|nd\.edu|notre dame|x-fabric|desync|tweeds|clickup|innovation sprint|sprint lab|dnipro|questbridge|cal\.com/' .claude-plugin/ plugins/ templates/ README.md THIRD_PARTY.md LICENSE` → empty (then a separate check that `sviatil0` appears only in URLs).
 - [ ] **Step 2: Manifest validation:** both JSONs parse; plugin `source` dir exists with plugin.json; all three `name` fields equal `founder-kit`; every `skills/*/` dir contains SKILL.md whose frontmatter `name:` equals the dir name.
 - [ ] **Step 3: Script sanity:** `python3 -m py_compile` on every vendored `.py`.
 - [ ] **Step 4: Fix anything found, then commit** `feat: founder-kit v0.1.0: six skills, ecosystem guide, templates`.

@@ -60,7 +60,7 @@ Forbidden strings anywhere in shipped files (case-insensitive):
 `soleksii`, `oleksiienko`, `sviatoslav`, `stefan`, `nd.edu`, `notre dame`,
 `x-fabric`, `desync`, `tweeds`, `clickup`, `innovation sprint`, `sprint lab`,
 `dnipro`, `questbridge`, `cal.com/`, `/Users/soleksii`, any phone number.
-Exception: `sviatil0` allowed only in repo URLs (plugin.json, README install lines).
+Exception: `sviatil0` allowed in repo URLs, install lines, and manifest author/owner/copyright fields.
 
 ## Third-party ecosystem (linked, not vendored)
 

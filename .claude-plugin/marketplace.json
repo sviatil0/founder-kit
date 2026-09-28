@@ -1,6 +1,6 @@
 {
   "name": "founder-kit",
-  "owner": { "name": "Stefan Oleksiienko" },
+  "owner": { "name": "sviatil0" },
   "metadata": {
     "description": "App-building skill kit for startup founders using Claude Code: ship discipline, engineering standards, meeting briefs, deep research, image pipeline",
     "version": "0.1.0"
@@ -11,7 +11,7 @@
       "source": "./plugins/founder-kit",
       "description": "Six skills that give a founder the build-and-ship workflow of a full engineering org: issue-to-PR flow, engineering standards for Next.js + Supabase + Vercel, CI-clean PR bodies, meeting-to-deployed-brief, iterative deep research, and a judged image-generation pipeline.",
       "version": "0.1.0",
-      "author": { "name": "Stefan Oleksiienko" },
+      "author": { "name": "sviatil0" },
       "keywords": ["founders", "skills", "nextjs", "supabase", "vercel", "workflow", "research"],
       "category": "productivity",
       "strict": false

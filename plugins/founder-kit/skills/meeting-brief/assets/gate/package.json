@@ -1,0 +1,8 @@
+{
+  "name": "meeting-brief",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/functions": "latest"
+  }
+}
