@@ -1,0 +1,10 @@
+{
+  "name": "founder-kit",
+  "description": "App-building skills for startup founders: ship-flow, engineering-standards, pr-writer, meeting-brief, deep-research, image-pipeline",
+  "version": "0.1.0",
+  "author": { "name": "Stefan Oleksiienko" },
+  "homepage": "https://github.com/sviatil0/founder-kit",
+  "repository": "https://github.com/sviatil0/founder-kit",
+  "license": "MIT",
+  "keywords": ["founders", "startup", "skills", "nextjs", "supabase", "vercel"]
+}
