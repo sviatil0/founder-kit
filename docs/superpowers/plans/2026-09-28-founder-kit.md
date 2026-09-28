@@ -8,7 +8,7 @@
 
 **Tech Stack:** Claude Code plugin/marketplace JSON manifests, Markdown SKILL.md files, Python 3 stdlib scripts (vendored), git + gh CLI.
 
-**Spec:** `docs/superpowers/specs/2026-09-28-founder-kit-design.md` (same repo — read it first; the forbidden-strings list and skill table there govern every task).
+**Spec:** `docs/superpowers/specs/2026-09-28-founder-kit-design.md` (same repo: read it first; the forbidden-strings list and skill table there govern every task).
 
 ## Global Constraints
 
@@ -60,17 +60,17 @@
 
 **Interfaces:** Produces skill name `engineering-standards` for Task 6 catalog.
 
-- [ ] **Step 1: Write the skill** (~300-450 lines) targeting Next.js App Router + TypeScript + Supabase/Postgres + Vercel. Keep the source's framing ("read the task, identify which rules bite, apply with judgment; explicit user instruction wins"). Required sections, each with a short wrong-vs-right TypeScript example: encapsulation and module boundaries (one component/服务 per file, soft 300-line limit, split at the seam); naming (no magic numbers, constants/enums, intention-revealing names); imports top-of-file only; validation at every boundary with zod (API routes, server actions, forms); Supabase discipline (RLS on every table, no service-role key in client code, parameterized queries via the client, never string-interpolated SQL); migration safety (expand → contract, additive first, backfill, then drop; never destructive in one step); React habits (never useEffect for derived state or data fetching; server components default, client components only for interactivity; minimize state); resilience (retry with exponential backoff on third-party calls, timeouts, idempotency for webhooks); structured logging (JSON, request id, no console.log soup in production paths); secrets hygiene (env vars only, `.env.local` gitignored, Vercel env for deploys, never commit keys); OWASP baseline (authN+authZ on every protected route and server action, output encoding, dependency audit); testing discipline (unit test per unit of logic, Playwright smoke for the critical path, test the behavior not the implementation); Conventional Commits.
-- [ ] **Step 2: Fix any accidental "服务" or non-English tokens; re-read for stack correctness** (no Pydantic/Alembic/Python references except a one-line "if your stack is Python, adapt these same rules" note).
+- [ ] **Step 1: Write the skill** (~300-450 lines) targeting Next.js App Router + TypeScript + Supabase/Postgres + Vercel. Keep the source's framing ("read the task, identify which rules bite, apply with judgment; explicit user instruction wins"). Required sections, each with a short wrong-vs-right TypeScript example: encapsulation and module boundaries (one component or service per file, soft 300-line limit, split at the seam); naming (no magic numbers, constants/enums, intention-revealing names); imports top-of-file only; validation at every boundary with zod (API routes, server actions, forms); Supabase discipline (RLS on every table, no service-role key in client code, parameterized queries via the client, never string-interpolated SQL); migration safety (expand → contract, additive first, backfill, then drop; never destructive in one step); React habits (never useEffect for derived state or data fetching; server components default, client components only for interactivity; minimize state); resilience (retry with exponential backoff on third-party calls, timeouts, idempotency for webhooks); structured logging (JSON, request id, no console.log soup in production paths); secrets hygiene (env vars only, `.env.local` gitignored, Vercel env for deploys, never commit keys); OWASP baseline (authN+authZ on every protected route and server action, output encoding, dependency audit); testing discipline (unit test per unit of logic, Playwright smoke for the critical path, test the behavior not the implementation); Conventional Commits.
+- [ ] **Step 2: Re-read for stack correctness** (no Pydantic/Alembic/Python references except a one-line "if your stack is Python, adapt these same rules" note).
 - [ ] **Step 3: Verify:** forbidden-strings grep clean; `grep -c 'useEffect' file` ≥ 1; `grep -ci 'RLS' file` ≥ 1; frontmatter valid.
 
 ### Task 4: meeting-brief skill (Opus subagent C)
 
 **Files:**
 - Create: `plugins/founder-kit/skills/meeting-brief/SKILL.md` (rewrite, ~150-200 lines)
-- Create: `plugins/founder-kit/skills/meeting-brief/references/` — port `dashboard-build.md`, `lock-and-deploy.md`, `research-and-branding.md`, `granola-transcript.md` from source, scrubbed; write new `partner-variant.md`
-- Create: `plugins/founder-kit/skills/meeting-brief/scripts/` — copy `password_protect.py`, `brand_fetch.py`, `granola_decrypt.py`, `requirements.txt`, scrubbed
-- Create: `plugins/founder-kit/skills/meeting-brief/assets/` — copy `starter/` and `gate/` trees, scrubbed
+- Create: `plugins/founder-kit/skills/meeting-brief/references/`: port `dashboard-build.md`, `lock-and-deploy.md`, `research-and-branding.md`, `granola-transcript.md` from source, scrubbed; write new `partner-variant.md`
+- Create: `plugins/founder-kit/skills/meeting-brief/scripts/`: copy `password_protect.py`, `brand_fetch.py`, `granola_decrypt.py`, `requirements.txt`, scrubbed
+- Create: `plugins/founder-kit/skills/meeting-brief/assets/`: copy `starter/` and `gate/` trees, scrubbed
 - Read-only sources: `/Users/soleksii/.claude/skills/granola-meeting-dashboard/` (EXCLUDE `.git/`, `__pycache__/`, `.dek-cache`, `.gitignore`), `/Users/soleksii/.claude/skills/isl-partner-dashboard/SKILL.md`
 
 **Interfaces:** Produces skill name `meeting-brief` for Task 6 catalog.
@@ -111,7 +111,7 @@
 - [ ] **Step 1: Leak scan:** `grep -rniE 'soleksii|oleksiienko|sviatoslav|stefan|nd\.edu|notre dame|x-fabric|desync|tweeds|clickup|innovation sprint|sprint lab|dnipro|questbridge|cal\.com/' plugins/ templates/ README.md THIRD_PARTY.md` → empty (then a separate check that `sviatil0` appears only in URLs).
 - [ ] **Step 2: Manifest validation:** both JSONs parse; plugin `source` dir exists with plugin.json; all three `name` fields equal `founder-kit`; every `skills/*/` dir contains SKILL.md whose frontmatter `name:` equals the dir name.
 - [ ] **Step 3: Script sanity:** `python3 -m py_compile` on every vendored `.py`.
-- [ ] **Step 4: Fix anything found, then commit** `feat: founder-kit v0.1.0 — six skills, ecosystem guide, templates`.
+- [ ] **Step 4: Fix anything found, then commit** `feat: founder-kit v0.1.0: six skills, ecosystem guide, templates`.
 
 ### Task 8: Publish (orchestrator)
 

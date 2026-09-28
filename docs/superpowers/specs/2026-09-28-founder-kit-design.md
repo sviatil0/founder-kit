@@ -1,4 +1,4 @@
-# founder-kit — Design Spec (2026-09-28)
+# founder-kit: Design Spec (2026-09-28)
 
 ## Purpose
 
@@ -51,7 +51,7 @@ founder-kit/
 | deep-research | `~/.claude/skills/iterative-deep-research/SKILL.md` | near-verbatim port, trigger `/deep-research` |
 | image-pipeline | `~/.claude/skills/nano-banana-pipeline/SKILL.md` | Stefan's Vertex account/project removed; runs on user's `GEMINI_API_KEY` (Google AI Studio), Vertex via their own gcloud as fallback |
 
-Dropped from the original seven: `handoff` — discovered to be a third-party clone
+Dropped from the original seven: `handoff`: discovered to be a third-party clone
 (`quantsquirrel/claude-handoff-baton`); linked in THIRD_PARTY.md instead.
 
 ## Genericization rules (hard gate)
@@ -74,7 +74,7 @@ Tiers in THIRD_PARTY.md, each with exact install command:
 
 - Two slash commands, no build step, no symlinks; marketplace updates propagate on plugin update.
 - Skills are prose + small Python scripts; only `meeting-brief` scripts need `python3` (stdlib + `requests`), only `image-pipeline` needs `GEMINI_API_KEY`, `deep-research` uses built-in WebSearch/WebFetch. Everything else: zero dependencies.
-- Works on any machine with Claude Code ≥ plugin-marketplace support; nothing assumes macOS except Granola local-cache decrypt (optional path — pasted transcripts always work).
+- Works on any machine with Claude Code ≥ plugin-marketplace support; nothing assumes macOS except Granola local-cache decrypt (optional path: pasted transcripts always work).
 
 ## Testing
 
