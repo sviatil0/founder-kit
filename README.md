@@ -1,32 +1,78 @@
 # founder-kit
 
-A Claude Code plugin for people shipping a product with one to three engineers. It packages
-six skills that stand in for the parts of an engineering org you do not have yet: ship
-discipline, a stack rulebook, PR writing, meeting follow-up, research, and image generation.
-Install it once and Claude starts behaving like a senior team instead of an eager intern: an
-issue before the code, a plan before the branch, validation at every boundary, a PR body a
-reviewer can actually trust, and a deployed artifact at the end of a call instead of a note
-nobody reads.
+**Make Claude Code ship like a senior engineering team, when your whole team is you.**
+
+```
+/plugin marketplace add sviatil0/founder-kit
+```
+```
+/plugin install founder-kit@founder-kit
+```
+
+Two commands typed inside a Claude Code session. No build step, no config, no dotfiles.
+
+## Why you need this
+
+Claude Code out of the box is a brilliant intern. It writes code astonishingly fast, and it
+ships the way an intern ships: straight to main, no issue, no plan, no tests, a PR
+description that says "fixed stuff", and by next Tuesday neither of you remembers why the
+schema changed.
+
+At a real company, process catches that: a senior engineer demands a plan, a reviewer rejects
+the vague PR, a rulebook says validate your inputs and never commit a secret. You do not have
+those people. You have you, at 1 a.m., merging your own code.
+
+founder-kit is those people, written down. Six skills that load into Claude and change its
+default behavior: an issue and a plan before code, a rulebook it checks every change against,
+PR descriptions a reviewer can trust, and real artifacts out of the unglamorous work around
+building; calls become deployed follow-up pages, vague questions become cited research,
+"make me a hero image" becomes a judged generation loop instead of a coin flip.
+
+You do not learn new commands. You talk the way you already talk, and Claude behaves better.
+
+## What actually changes
+
+| You say | Without founder-kit | With founder-kit |
+|---|---|---|
+| "add Stripe billing" | 400 lines appear on main | an issue with acceptance criteria, a plan you approve, a branch, a reviewable PR |
+| "just quickly add a field" | it just quickly adds a field | the same discipline, sized down; "quickly" is how prod breaks |
+| "is this safe to ship?" | a shrug in prose | checked against a 14-section rulebook: input validation, row-level security, migration safety, secrets |
+| "write the PR" | "This PR makes changes to improve the app" | a body with a summary, the actual test output, and an honest checklist |
+| a sales call ends | notes you never reopen | a password-locked brief on Vercel: their pains, the people involved, what was agreed, next steps |
+| "should we build X?" | confident guessing | a sharpened question, sources fetched and cross-checked, a cited report with confidence levels |
+
+## Your first hour
+
+After installing, try these in your project, verbatim:
+
+1. `let's start the next feature on my list` and watch it open an issue and write a plan
+   before touching code.
+2. `review this file against our standards` on the worst file you know you have.
+3. Paste any meeting transcript and say `turn this into a brief I can share`.
+
+If those three land, you have the idea. Everything below is reference.
+
+---
+
+## The six skills
+
+| Skill | What it does | Say something like |
+|---|---|---|
+| `ship-flow` | Keeps every change on the issue, plan, branch, PR, merge path, sized for a tiny team. | "let's start the billing feature", "just quickly add a field", "open a PR for this" |
+| `engineering-standards` | The rulebook Claude checks code against: boundaries, zod validation, Supabase RLS, migration safety, React habits, logging, secrets, tests. | "follow the project style", "make this production grade", "is this safe to ship" |
+| `pr-writer` | PR titles and bodies that pass review and CI the first time, with honest checklists. | "write the PR", "my PR is blocked on the description", "summarize this branch" |
+| `meeting-brief` | Turns any call transcript into a password-locked brief deployed on Vercel: pains, people, agreements, action items. | "build a brief from our call", "turn this transcript into something I can share" |
+| `deep-research` | Sharpens a vague research request against a rubric, then fans out, verifies claims, and returns a cited report. | "research this properly", "I need a sourced report on the market", "/deep-research" |
+| `image-pipeline` | Judged generation loop: ideas, then prompts, then images, each stage scored against your brief before the next. | "generate a hero image", "make illustrations for the landing page" |
 
 Stack assumption for the code-facing skills: Next.js App Router, TypeScript, Supabase,
 Vercel. The workflow skills (ship-flow, pr-writer, deep-research, meeting-brief) do not care
 what you build with.
 
-## Install
-
-Start Claude Code in your project (`claude`), then type these two commands at the prompt:
-
-```
-/plugin marketplace add sviatil0/founder-kit
-```
-
-```
-/plugin install founder-kit@founder-kit
-```
-
-That is the whole install: no build step, no symlinks, no dotfile surgery. Both lines are
-slash commands typed inside a session, not shell commands; the `claude` CLI is only how you
-get to the prompt. Run `/plugin` afterwards to confirm founder-kit is listed and enabled.
+Credentials, one line each: ship-flow, engineering-standards, and pr-writer need nothing
+beyond `git` and `gh`. deep-research uses the built-in web tools. meeting-brief needs
+`python3` and a logged-in Vercel CLI. image-pipeline needs `GEMINI_API_KEY`. Every skill that
+depends on a credential checks for it first and prints setup instructions if it is missing.
 
 ## 10-minute setup checklist
 
@@ -48,22 +94,6 @@ Nothing below is required to install the plugin; each line unlocks one part of i
       setup steps and stops instead of failing in a loop.
 - [ ] **Optional**: copy `templates/CLAUDE.md` and `templates/settings.json` into your repo
       (see "Using the templates" below).
-
-## The six skills
-
-| Skill | What it does | Say something like |
-|---|---|---|
-| `ship-flow` | Keeps every change on the issue, plan, branch, PR, merge path, sized for a tiny team. | "let's start the billing feature", "just quickly add a field", "open a PR for this" |
-| `engineering-standards` | The rulebook Claude checks code against: boundaries, zod validation, Supabase RLS, migration safety, React habits, logging, secrets, tests. | "follow the project style", "make this production grade", "is this safe to ship" |
-| `pr-writer` | PR titles and bodies that pass review and CI the first time, with honest checklists. | "write the PR", "my PR is blocked on the description", "summarize this branch" |
-| `meeting-brief` | Turns any call transcript into a password-locked brief deployed on Vercel: pains, people, agreements, action items. | "build a brief from our call", "turn this transcript into something I can share" |
-| `deep-research` | Sharpens a vague research request against a rubric, then fans out, verifies claims, and returns a cited report. | "research this properly", "I need a sourced report on the market", "/deep-research" |
-| `image-pipeline` | Judged generation loop: ideas, then prompts, then images, each stage scored against your brief before the next. | "generate a hero image", "make illustrations for the landing page" |
-
-Credentials, one line each: ship-flow, engineering-standards, and pr-writer need nothing
-beyond `git` and `gh`. deep-research uses the built-in web tools. meeting-brief needs
-`python3` and a logged-in Vercel CLI. image-pipeline needs `GEMINI_API_KEY`. Every skill that
-depends on a credential checks for it first and prints setup instructions if it is missing.
 
 ## How skills fire
 
@@ -154,5 +184,4 @@ branch. Skills that assume one person's machine do not merge.
 
 ## License
 
-MIT, see [LICENSE](./LICENSE). Maintained by the maintainer of this repo; use it, fork it,
-strip out the parts you do not want.
+MIT, see [LICENSE](./LICENSE). Use it, fork it, strip out the parts you do not want.
